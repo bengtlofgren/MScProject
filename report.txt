@@ -1,0 +1,1133 @@
+TensorFlow 2.0 Upgrade Script
+-----------------------------
+Converted 60 files
+Detected 9 issues that require attention
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+File: /home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/params/parameter.py
+--------------------------------------------------------------------------------
+/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/params/parameter.py:394:19: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+--------------------------------------------------------------------------------
+File: /home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/params/dataholders.py
+--------------------------------------------------------------------------------
+/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/params/dataholders.py:223:32: WARNING: Changing dataset.make_initializable_iterator() to tf.compat.v1.data.make_initializable_iterator(dataset). Please check this transformation.
+
+--------------------------------------------------------------------------------
+File: /home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/monitor.py
+--------------------------------------------------------------------------------
+/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/monitor.py:694:8: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+--------------------------------------------------------------------------------
+File: /home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/tensorflow_optimizer.py
+--------------------------------------------------------------------------------
+/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/tensorflow_optimizer.py:53:23: WARNING: (Manual check required) upgrading self.optimizer.minimize may require renaming or removing call arguments, but it was passed variable-length *args or **kwargs. The upgrade script cannot handle these automatically.
+--------------------------------------------------------------------------------
+File: /home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/hmc.py
+--------------------------------------------------------------------------------
+/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/hmc.py:174:45: WARNING: tf.cond called with strict argument, requires manual check: tf.cond no longer takes 'strict' argument, it behaves as if was set to True.
+/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/hmc.py:221:15: WARNING: tf.cond called with strict argument, requires manual check: tf.cond no longer takes 'strict' argument, it behaves as if was set to True.
+/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/hmc.py:248:21: WARNING: tf.cond called with strict argument, requires manual check: tf.cond no longer takes 'strict' argument, it behaves as if was set to True.
+--------------------------------------------------------------------------------
+File: /home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/scipy_optimizer.py
+--------------------------------------------------------------------------------
+/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/scipy_optimizer.py:130:12: WARNING: (Manual check required) upgrading self._optimizer.minimize may require renaming or removing call arguments, but it was passed variable-length *args or **kwargs. The upgrade script cannot handle these automatically.
+--------------------------------------------------------------------------------
+File: /home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/external_optimizer.py
+--------------------------------------------------------------------------------
+/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/external_optimizer.py:424:17: WARNING: (Manual check required) upgrading scipy.optimize.minimize may require renaming or removing call arguments, but it was passed variable-length *args or **kwargs. The upgrade script cannot handle these automatically.
+================================================================================
+Detailed log follows:
+
+================================================================================
+================================================================================
+Input tree: '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow'
+================================================================================
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/mean_functions.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/mean_functions.py'
+--------------------------------------------------------------------------------
+
+130:26: INFO: Added keywords to args of function 'tf.shape'
+141:27: INFO: Added keywords to args of function 'tf.shape'
+159:24: INFO: Added keywords to args of function 'tf.transpose'
+159:41: INFO: Added keywords to args of function 'tf.shape'
+161:12: INFO: Added keywords to args of function 'tf.transpose'
+161:35: INFO: Added keywords to args of function 'tf.transpose'
+161:64: INFO: Added keywords to args of function 'tf.shape'
+168:54: INFO: Added keywords to args of function 'tf.size'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/kullback_leiblers.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/kullback_leiblers.py'
+--------------------------------------------------------------------------------
+
+60:11: INFO: Added keywords to args of function 'tf.shape'
+60:30: INFO: Added keywords to args of function 'tf.shape'
+66:17: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+71:15: INFO: Added keywords to args of function 'tf.transpose'
+72:16: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+76:18: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+76:33: INFO: Added keywords to args of function 'tf.transpose'
+78:23: INFO: Renamed 'tf.matrix_band_part' to 'tf.linalg.band_part'
+79:18: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+82:18: INFO: Added keywords to args of function 'tf.reduce_sum'
+85:25: INFO: Added keywords to args of function 'tf.size'
+88:18: INFO: Added keywords to args of function 'tf.reduce_sum'
+88:32: INFO: Renamed 'tf.log' to 'tf.math.log'
+92:16: INFO: Added keywords to args of function 'tf.reduce_sum'
+96:18: INFO: Added keywords to args of function 'tf.transpose'
+97:21: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+98:20: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+98:40: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+99:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+103:20: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+104:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+110:24: INFO: Renamed 'tf.log' to 'tf.math.log'
+110:41: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+111:28: INFO: Added keywords to args of function 'tf.reduce_sum'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/session_manager.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/session_manager.py'
+--------------------------------------------------------------------------------
+
+31:20: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+43:32: INFO: Renamed 'tf.RunOptions' to 'tf.compat.v1.RunOptions'
+43:58: INFO: Renamed 'tf.RunOptions' to 'tf.compat.v1.RunOptions'
+73:34: INFO: Renamed 'tf.RunMetadata' to 'tf.compat.v1.RunMetadata'
+95:4: INFO: Renamed 'tf.reset_default_graph' to 'tf.compat.v1.reset_default_graph'
+111:27: INFO: Renamed 'tf.ConfigProto' to 'tf.compat.v1.ConfigProto'
+127:11: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/actions.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/actions.py'
+--------------------------------------------------------------------------------
+
+75:58: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+77:22: INFO: Renamed 'tf.get_default_session' to 'tf.compat.v1.get_default_session'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/features.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/features.py'
+--------------------------------------------------------------------------------
+
+117:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+127:14: INFO: Added keywords to args of function 'tf.transpose'
+128:38: INFO: Added keywords to args of function 'tf.reduce_prod'
+142:47: INFO: Added keywords to args of function 'tf.reduce_prod'
+172:14: INFO: Added keywords to args of function 'tf.reduce_sum'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/_settings.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/_settings.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/decors.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/decors.py'
+--------------------------------------------------------------------------------
+
+48:17: INFO: `name` passed to `name_scope`. Because you may be re-entering an existing scope, it is not safe to convert automatically,  the v2 name_scope does not support re-entering scopes by name.
+
+48:17: INFO: Renamed 'tf.name_scope' to 'tf.compat.v1.name_scope'
+162:45: INFO: `name` passed to `name_scope`. Because you may be re-entering an existing scope, it is not safe to convert automatically,  the v2 name_scope does not support re-entering scopes by name.
+
+162:45: INFO: Renamed 'tf.name_scope' to 'tf.compat.v1.name_scope'
+187:26: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/expectations.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/expectations.py'
+--------------------------------------------------------------------------------
+
+93:25: INFO: Added keywords to args of function 'tf.transpose'
+132:18: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+163:32: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+261:12: INFO: Added keywords to args of function 'tf.shape'
+267:27: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+267:39: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+269:20: INFO: Added keywords to args of function 'tf.transpose'
+270:31: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+271:31: INFO: Added keywords to args of function 'tf.reduce_sum'
+274:21: INFO: Added keywords to args of function 'tf.reduce_prod'
+275:38: INFO: Added keywords to args of function 'tf.reduce_sum'
+275:52: INFO: Renamed 'tf.log' to 'tf.math.log'
+275:59: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+292:34: INFO: tf.assert_equal requires manual check. tf.assert_equal has been changed to return None, the data argument has been removed, and arguments have been reordered.
+The calls have been converted to compat.v1 for safety (even though  they may already have been correct).
+292:34: INFO: Renamed 'tf.assert_equal' to 'tf.compat.v1.assert_equal'
+293:12: INFO: Added keywords to args of function 'tf.shape'
+298:12: INFO: Added keywords to args of function 'tf.shape'
+302:27: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+302:39: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+303:20: INFO: Added keywords to args of function 'tf.transpose'
+305:21: INFO: Added keywords to args of function 'tf.reduce_prod'
+306:38: INFO: Added keywords to args of function 'tf.reduce_sum'
+306:52: INFO: Renamed 'tf.log' to 'tf.math.log'
+306:59: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+309:31: INFO: Renamed 'tf.cholesky_solve' to 'tf.linalg.cholesky_solve'
+313:31: INFO: Added keywords to args of function 'tf.reduce_sum'
+331:34: INFO: tf.assert_equal requires manual check. tf.assert_equal has been changed to return None, the data argument has been removed, and arguments have been reordered.
+The calls have been converted to compat.v1 for safety (even though  they may already have been correct).
+331:34: INFO: Renamed 'tf.assert_equal' to 'tf.compat.v1.assert_equal'
+332:12: INFO: Added keywords to args of function 'tf.shape'
+337:12: INFO: Added keywords to args of function 'tf.shape'
+341:27: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+341:39: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+342:20: INFO: Added keywords to args of function 'tf.transpose'
+344:21: INFO: Added keywords to args of function 'tf.reduce_prod'
+345:38: INFO: Added keywords to args of function 'tf.reduce_sum'
+345:52: INFO: Renamed 'tf.log' to 'tf.math.log'
+345:59: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+348:31: INFO: Renamed 'tf.cholesky_solve' to 'tf.linalg.cholesky_solve'
+352:31: INFO: Added keywords to args of function 'tf.reduce_sum'
+380:29: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+384:12: INFO: Added keywords to args of function 'tf.shape'
+385:12: INFO: Added keywords to args of function 'tf.shape'
+400:21: INFO: Added keywords to args of function 'tf.reduce_prod'
+401:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+401:24: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+402:35: INFO: Added keywords to args of function 'tf.reduce_sum'
+402:49: INFO: Renamed 'tf.log' to 'tf.math.log'
+402:56: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+407:22: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+408:42: INFO: Added keywords to args of function 'tf.transpose'
+410:25: INFO: Added keywords to args of function 'tf.reduce_sum'
+414:19: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+415:38: INFO: Added keywords to args of function 'tf.reduce_sum'
+458:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+460:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+485:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+485:46: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+515:34: INFO: tf.assert_equal requires manual check. tf.assert_equal has been changed to return None, the data argument has been removed, and arguments have been reordered.
+The calls have been converted to compat.v1 for safety (even though  they may already have been correct).
+515:34: INFO: Renamed 'tf.assert_equal' to 'tf.compat.v1.assert_equal'
+516:12: INFO: Added keywords to args of function 'tf.shape'
+521:12: INFO: Added keywords to args of function 'tf.shape'
+539:34: INFO: tf.assert_equal requires manual check. tf.assert_equal has been changed to return None, the data argument has been removed, and arguments have been reordered.
+The calls have been converted to compat.v1 for safety (even though  they may already have been correct).
+539:34: INFO: Renamed 'tf.assert_equal' to 'tf.compat.v1.assert_equal'
+540:12: INFO: Added keywords to args of function 'tf.shape'
+545:12: INFO: Added keywords to args of function 'tf.shape'
+578:31: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+581:12: INFO: Added keywords to args of function 'tf.shape'
+602:11: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+616:11: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+755:12: INFO: Added keywords to args of function 'tf.shape'
+774:12: INFO: Added keywords to args of function 'tf.shape'
+874:23: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+910:35: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+913:12: INFO: Added keywords to args of function 'tf.shape'
+914:12: INFO: Added keywords to args of function 'tf.shape'
+922:27: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+922:39: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+924:22: INFO: Added keywords to args of function 'tf.transpose'
+926:31: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+927:31: INFO: Added keywords to args of function 'tf.reduce_sum'
+930:21: INFO: Added keywords to args of function 'tf.reduce_prod'
+931:38: INFO: Added keywords to args of function 'tf.reduce_sum'
+931:52: INFO: Renamed 'tf.log' to 'tf.math.log'
+931:59: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+938:24: INFO: Renamed 'tf.cholesky_solve' to 'tf.linalg.cholesky_solve'
+957:11: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+1038:30: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/transforms.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/transforms.py'
+--------------------------------------------------------------------------------
+
+109:15: INFO: Renamed 'tf.log' to 'tf.math.log'
+118:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+157:20: INFO: Renamed 'tf.log' to 'tf.math.log'
+157:28: INFO: Renamed 'tf.expm1' to 'tf.math.expm1'
+160:27: INFO: Added keywords to args of function 'tf.reduce_sum'
+217:16: INFO: Renamed 'tf.log' to 'tf.math.log'
+225:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+225:38: INFO: Renamed 'tf.log' to 'tf.math.log'
+264:20: INFO: Added keywords to args of function 'tf.reduce_prod'
+264:35: INFO: Added keywords to args of function 'tf.shape'
+266:21: INFO: Renamed 'tf.log' to 'tf.math.log'
+304:26: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+308:15: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/probability_distributions.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/probability_distributions.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/dispatch.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/dispatch.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/kernels.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/kernels.py'
+--------------------------------------------------------------------------------
+
+148:26: INFO: Added keywords to args of function 'tf.shape'
+149:20: INFO: Added keywords to args of function 'tf.convert_to_tensor'
+150:38: INFO: tf.assert_equal requires manual check. tf.assert_equal has been changed to return None, the data argument has been removed, and arguments have been reordered.
+The calls have been converted to compat.v1 for safety (even though  they may already have been correct).
+150:38: INFO: Renamed 'tf.assert_equal' to 'tf.compat.v1.assert_equal'
+164:14: INFO: Added keywords to args of function 'tf.cond'
+164:57: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+169:24: INFO: Added keywords to args of function 'tf.shape'
+171:32: INFO: Added keywords to args of function 'tf.transpose'
+172:32: INFO: Added keywords to args of function 'tf.transpose'
+173:29: INFO: Added keywords to args of function 'tf.transpose'
+197:23: INFO: Added keywords to args of function 'tf.shape'
+214:24: INFO: Added keywords to args of function 'tf.shape'
+215:19: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+217:31: INFO: Added keywords to args of function 'tf.shape'
+217:49: INFO: Added keywords to args of function 'tf.shape'
+235:31: INFO: Added keywords to args of function 'tf.shape'
+236:42: INFO: Added keywords to args of function 'tf.shape'
+237:42: INFO: Added keywords to args of function 'tf.shape'
+239:31: INFO: Added keywords to args of function 'tf.shape'
+239:49: INFO: Added keywords to args of function 'tf.shape'
+300:17: INFO: Added keywords to args of function 'tf.reduce_sum'
+302:25: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+305:13: INFO: Added keywords to args of function 'tf.reduce_sum'
+307:14: INFO: Added keywords to args of function 'tf.reduce_sum'
+333:23: INFO: Added keywords to args of function 'tf.shape'
+451:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+635:19: INFO: Added keywords to args of function 'tf.reduce_sum'
+665:25: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+767:21: INFO: Added keywords to args of function 'tf.reduce_sum'
+770:22: INFO: Added keywords to args of function 'tf.reduce_sum'
+816:58: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+817:25: INFO: Added keywords to args of function 'tf.transpose'
+823:16: INFO: Added keywords to args of function 'tf.reduce_sum'
+914:16: INFO: Added keywords to args of function 'tf.transpose'
+915:27: INFO: Added keywords to args of function 'tf.shape'
+917:18: INFO: Renamed 'tf.extract_image_patches' to 'tf.image.extract_patches'
+922:14: INFO: Added keywords to args of function 'tf.shape'
+924:35: INFO: Added keywords to args of function 'tf.shape'
+933:12: INFO: Added keywords to args of function 'tf.reduce_sum'
+939:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+982:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+989:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/test_util.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/test_util.py'
+--------------------------------------------------------------------------------
+
+74:16: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+90:18: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/__init__.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/misc.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/misc.py'
+--------------------------------------------------------------------------------
+
+27:15: INFO: Renamed 'tf.GraphKeys' to 'tf.compat.v1.GraphKeys'
+28:21: INFO: Renamed 'tf.GraphKeys' to 'tf.compat.v1.GraphKeys'
+121:11: INFO: Added keywords to args of function 'tf.transpose'
+200:14: INFO: Renamed 'tf.get_default_session' to 'tf.compat.v1.get_default_session'
+202:22: INFO: Renamed 'tf.global_variables_initializer' to 'tf.compat.v1.global_variables_initializer'
+233:27: INFO: Renamed 'tf.data.Iterator' to 'tf.compat.v1.data.Iterator'
+239:24: INFO: Renamed 'tf.report_uninitialized_variables' to 'tf.compat.v1.report_uninitialized_variables'
+258:11: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+293:19: INFO: Added keywords to args of function 'tf.shape'
+294:18: INFO: Added keywords to args of function 'tf.size'
+317:42: INFO: Added keywords to args of function 'tf.shape'
+317:55: INFO: Added keywords to args of function 'tf.shape'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/likelihoods.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/likelihoods.py'
+--------------------------------------------------------------------------------
+
+170:23: INFO: Added keywords to args of function 'tf.shape'
+182:48: INFO: Renamed 'tf.log' to 'tf.math.log'
+218:21: INFO: Renamed 'tf.lgamma' to 'tf.math.lgamma'
+218:44: INFO: Renamed 'tf.log' to 'tf.math.log'
+264:23: INFO: Added keywords to args of function 'tf.shape'
+269:24: INFO: Renamed 'tf.erf' to 'tf.math.erf'
+326:39: INFO: Renamed 'tf.lgamma' to 'tf.math.lgamma'
+327:41: INFO: Renamed 'tf.log' to 'tf.math.log'
+392:12: INFO: Added keywords to args of function 'tf.argmax'
+404:22: INFO: Added keywords to args of function 'tf.reduce_sum'
+405:23: INFO: Added keywords to args of function 'tf.reduce_sum'
+414:28: INFO: Renamed 'tf.erf' to 'tf.math.erf'
+423:25: INFO: Added keywords to args of function 'tf.reduce_prod'
+423:46: INFO: Renamed keyword argument for tf.reduce_prod from reduction_indices to axis
+444:47: INFO: Added keywords to args of function 'tf.argmax'
+445:30: INFO: Added keywords to args of function 'tf.shape'
+446:30: INFO: Added keywords to args of function 'tf.shape'
+447:20: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+448:19: INFO: Renamed 'tf.log' to 'tf.math.log'
+457:25: INFO: Renamed 'tf.log' to 'tf.math.log'
+457:72: INFO: Renamed 'tf.log' to 'tf.math.log'
+465:50: INFO: Added keywords to args of function 'tf.shape'
+468:17: INFO: Added keywords to args of function 'tf.transpose'
+474:15: INFO: Renamed 'tf.log' to 'tf.math.log'
+531:54: INFO: Added keywords to args of function 'tf.size'
+600:15: INFO: Renamed 'tf.log' to 'tf.math.log'
+620:46: INFO: Added keywords to args of function 'tf.shape'
+627:49: INFO: Added keywords to args of function 'tf.shape'
+728:20: INFO: tf.assert_equal requires manual check. tf.assert_equal has been changed to return None, the data argument has been removed, and arguments have been reordered.
+The calls have been converted to compat.v1 for safety (even though  they may already have been correct).
+728:20: INFO: Renamed 'tf.assert_equal' to 'tf.compat.v1.assert_equal'
+728:36: INFO: Added keywords to args of function 'tf.shape'
+729:20: INFO: tf.assert_equal requires manual check. tf.assert_equal has been changed to return None, the data argument has been removed, and arguments have been reordered.
+The calls have been converted to compat.v1 for safety (even though  they may already have been correct).
+729:20: INFO: Renamed 'tf.assert_equal' to 'tf.compat.v1.assert_equal'
+729:44: INFO: Added keywords to args of function 'tf.shape'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/_version.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/_version.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/quadrature.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/quadrature.py'
+--------------------------------------------------------------------------------
+
+72:8: INFO: Added keywords to args of function 'tf.shape'
+75:15: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+78:20: INFO: Added keywords to args of function 'tf.transpose'
+92:11: INFO: Added keywords to args of function 'tf.reduce_sum'
+164:16: INFO: Added keywords to args of function 'tf.shape'
+168:16: INFO: Added keywords to args of function 'tf.shape'
+190:21: INFO: Added keywords to args of function 'tf.reduce_logsumexp'
+218:11: INFO: Added keywords to args of function 'tf.shape'
+218:29: INFO: Added keywords to args of function 'tf.shape'
+221:18: INFO: Renamed 'tf.random_normal' to 'tf.random.normal'
+227:16: INFO: Added keywords to args of function 'tf.shape'
+236:20: INFO: Renamed 'tf.log' to 'tf.math.log'
+237:19: INFO: Added keywords to args of function 'tf.reduce_logsumexp'
+239:19: INFO: Added keywords to args of function 'tf.reduce_mean'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/conditionals.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/conditionals.py'
+--------------------------------------------------------------------------------
+
+116:15: INFO: Added keywords to args of function 'tf.shape'
+160:18: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+162:18: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+200:15: INFO: Added keywords to args of function 'tf.shape'
+201:8: INFO: Added keywords to args of function 'tf.shape'
+202:8: INFO: Added keywords to args of function 'tf.shape'
+210:10: INFO: Added keywords to args of function 'tf.transpose'
+212:19: INFO: Added keywords to args of function 'tf.shape'
+213:9: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+216:54: INFO: Added keywords to args of function 'tf.shape'
+217:8: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+224:21: INFO: Added keywords to args of function 'tf.reduce_sum'
+230:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+230:39: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+239:37: INFO: Added keywords to args of function 'tf.transpose'
+242:60: INFO: Added keywords to args of function 'tf.shape'
+253:26: INFO: Added keywords to args of function 'tf.reduce_sum'
+256:15: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+303:15: INFO: Added keywords to args of function 'tf.shape'
+304:14: INFO: Added keywords to args of function 'tf.shape'
+305:15: INFO: Added keywords to args of function 'tf.shape'
+307:15: INFO: Renamed 'tf.matrix_band_part' to 'tf.linalg.band_part'
+309:11: INFO: Added keywords to args of function 'tf.transpose'
+311:10: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+314:15: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+316:19: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+318:14: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+324:16: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+325:20: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+325:58: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+337:19: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+342:43: INFO: Renamed 'tf.matrix_transpose' to 'tf.linalg.matrix_transpose'
+346:16: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+346:47: INFO: Renamed 'tf.trace' to 'tf.linalg.trace'
+347:16: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+356:24: INFO: Renamed 'tf.trace' to 'tf.linalg.trace'
+360:16: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+380:17: INFO: Added keywords to args of function 'tf.shape'
+384:23: INFO: Added keywords to args of function 'tf.size'
+388:38: INFO: tf.assert_equal requires manual check. tf.assert_equal has been changed to return None, the data argument has been removed, and arguments have been reordered.
+The calls have been converted to compat.v1 for safety (even though  they may already have been correct).
+388:38: INFO: Renamed 'tf.assert_equal' to 'tf.compat.v1.assert_equal'
+390:18: INFO: Renamed 'tf.random_normal' to 'tf.random.normal'
+394:38: INFO: tf.assert_equal requires manual check. tf.assert_equal has been changed to return None, the data argument has been removed, and arguments have been reordered.
+The calls have been converted to compat.v1 for safety (even though  they may already have been correct).
+394:38: INFO: Renamed 'tf.assert_equal' to 'tf.compat.v1.assert_equal'
+400:18: INFO: Renamed 'tf.random_normal' to 'tf.random.normal'
+401:19: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+428:15: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+428:30: INFO: Added keywords to args of function 'tf.transpose'
+429:15: INFO: Added keywords to args of function 'tf.transpose'
+431:15: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+445:11: INFO: Added keywords to args of function 'tf.transpose'
+453:11: INFO: Added keywords to args of function 'tf.transpose'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/priors.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/priors.py'
+--------------------------------------------------------------------------------
+
+48:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+66:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+84:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+102:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+120:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+138:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+159:41: INFO: Added keywords to args of function 'tf.size'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/logdensities.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/logdensities.py'
+--------------------------------------------------------------------------------
+
+24:39: INFO: Renamed 'tf.log' to 'tf.math.log'
+28:10: INFO: Renamed 'tf.log' to 'tf.math.log'
+33:11: INFO: Renamed 'tf.log' to 'tf.math.log'
+33:18: INFO: Renamed 'tf.where' to 'tf.compat.v1.where'
+37:15: INFO: Renamed 'tf.log' to 'tf.math.log'
+37:35: INFO: Renamed 'tf.lgamma' to 'tf.math.lgamma'
+41:23: INFO: Renamed 'tf.log' to 'tf.math.log'
+45:20: INFO: Renamed 'tf.log' to 'tf.math.log'
+45:36: INFO: Renamed 'tf.lgamma' to 'tf.math.lgamma'
+46:25: INFO: Renamed 'tf.log' to 'tf.math.log'
+51:12: INFO: Renamed 'tf.lgamma' to 'tf.math.lgamma'
+51:41: INFO: Renamed 'tf.lgamma' to 'tf.math.lgamma'
+52:17: INFO: Renamed 'tf.log' to 'tf.math.log'
+52:44: INFO: Renamed 'tf.log' to 'tf.math.log'
+55:8: INFO: Renamed 'tf.log' to 'tf.math.log'
+61:26: INFO: Renamed 'tf.log' to 'tf.math.log'
+61:52: INFO: Renamed 'tf.log' to 'tf.math.log'
+62:10: INFO: Renamed 'tf.lgamma' to 'tf.math.lgamma'
+63:10: INFO: Renamed 'tf.lgamma' to 'tf.math.lgamma'
+64:10: INFO: Renamed 'tf.lgamma' to 'tf.math.lgamma'
+68:38: INFO: Renamed 'tf.log' to 'tf.math.log'
+89:12: INFO: tf.assert_equal requires manual check. tf.assert_equal has been changed to return None, the data argument has been removed, and arguments have been reordered.
+The calls have been converted to compat.v1 for safety (even though  they may already have been correct).
+89:12: INFO: Renamed 'tf.assert_equal' to 'tf.compat.v1.assert_equal'
+89:28: INFO: Added keywords to args of function 'tf.shape'
+89:42: INFO: Added keywords to args of function 'tf.shape'
+89:58: INFO: Added keywords to args of function 'tf.shape'
+92:16: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+93:27: INFO: Added keywords to args of function 'tf.shape'
+94:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+96:13: INFO: Added keywords to args of function 'tf.reduce_sum'
+96:27: INFO: Renamed 'tf.log' to 'tf.math.log'
+96:34: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/saver/serializers.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/saver/serializers.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/saver/context.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/saver/context.py'
+--------------------------------------------------------------------------------
+
+40:32: INFO: Renamed 'tf.get_default_session' to 'tf.compat.v1.get_default_session'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/saver/coders.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/saver/coders.py'
+--------------------------------------------------------------------------------
+
+80:57: INFO: Renamed 'tf.data.Iterator' to 'tf.compat.v1.data.Iterator'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/saver/__init__.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/saver/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/saver/saver.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/saver/saver.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/models/gplvm.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/models/gplvm.py'
+--------------------------------------------------------------------------------
+
+131:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+133:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+135:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+140:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+140:42: INFO: Added keywords to args of function 'tf.transpose'
+141:14: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+142:14: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+142:44: INFO: Added keywords to args of function 'tf.transpose'
+144:13: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+145:25: INFO: Added keywords to args of function 'tf.reduce_sum'
+145:39: INFO: Renamed 'tf.log' to 'tf.math.log'
+145:46: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+146:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+149:69: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+150:21: INFO: Added keywords to args of function 'tf.size'
+151:20: INFO: Added keywords to args of function 'tf.shape'
+152:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+152:34: INFO: Renamed 'tf.log' to 'tf.math.log'
+153:21: INFO: Added keywords to args of function 'tf.reduce_sum'
+153:35: INFO: Renamed 'tf.log' to 'tf.math.log'
+155:21: INFO: Added keywords to args of function 'tf.reduce_sum'
+158:21: INFO: Added keywords to args of function 'tf.size'
+159:28: INFO: Renamed 'tf.log' to 'tf.math.log'
+161:24: INFO: Added keywords to args of function 'tf.reduce_sum'
+162:23: INFO: Added keywords to args of function 'tf.reduce_sum'
+163:29: INFO: Added keywords to args of function 'tf.reduce_sum'
+164:29: INFO: Added keywords to args of function 'tf.reduce_sum'
+164:43: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+180:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+185:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+187:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+187:42: INFO: Added keywords to args of function 'tf.transpose'
+188:14: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+189:14: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+189:44: INFO: Added keywords to args of function 'tf.transpose'
+191:13: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+192:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+193:15: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+194:15: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+199:36: INFO: Added keywords to args of function 'tf.shape'
+202:42: INFO: Added keywords to args of function 'tf.reduce_sum'
+203:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+204:33: INFO: Added keywords to args of function 'tf.shape'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/models/sgpr.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/models/sgpr.py'
+--------------------------------------------------------------------------------
+
+57:27: INFO: Added keywords to args of function 'tf.shape'
+63:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+64:13: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+66:18: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+68:12: INFO: Added keywords to args of function 'tf.reduce_sum'
+68:35: INFO: Added keywords to args of function 'tf.reduce_sum'
+76:34: INFO: Renamed 'tf.log' to 'tf.math.log'
+77:17: INFO: Added keywords to args of function 'tf.reduce_sum'
+77:31: INFO: Renamed 'tf.log' to 'tf.math.log'
+77:38: INFO: Renamed 'tf.diag_part' to 'tf.linalg.tensor_diag_part'
+77:58: INFO: Added keywords to args of function 'tf.reduce_sum'
+77:72: INFO: Renamed 'tf.log' to 'tf.math.log'
+77:79: INFO: Renamed 'tf.diag_part' to 'tf.linalg.tensor_diag_part'
+79:13: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+80:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+81:48: INFO: Added keywords to args of function 'tf.reduce_sum'
+81:85: INFO: Added keywords to args of function 'tf.reduce_sum'
+133:27: INFO: Added keywords to args of function 'tf.shape'
+134:29: INFO: Added keywords to args of function 'tf.shape'
+140:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+144:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+147:13: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+149:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+153:43: INFO: Added keywords to args of function 'tf.reduce_sum'
+153:57: INFO: Renamed 'tf.log' to 'tf.math.log'
+153:64: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+154:47: INFO: Renamed 'tf.log' to 'tf.math.log'
+155:24: INFO: Added keywords to args of function 'tf.reduce_sum'
+156:23: INFO: Added keywords to args of function 'tf.reduce_sum'
+157:37: INFO: Added keywords to args of function 'tf.reduce_sum'
+158:36: INFO: Added keywords to args of function 'tf.reduce_sum'
+158:50: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+175:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+176:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+178:13: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+180:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+181:15: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+182:15: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+189:42: INFO: Added keywords to args of function 'tf.reduce_sum'
+190:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+207:19: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+209:23: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+213:23: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+264:14: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+265:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+267:18: INFO: Added keywords to args of function 'tf.reduce_sum'
+271:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+275:16: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+305:33: INFO: Added keywords to args of function 'tf.reduce_sum'
+306:34: INFO: Added keywords to args of function 'tf.reduce_sum'
+317:46: INFO: Renamed 'tf.log' to 'tf.math.log'
+318:36: INFO: Added keywords to args of function 'tf.reduce_sum'
+318:50: INFO: Renamed 'tf.log' to 'tf.math.log'
+318:64: INFO: Added keywords to args of function 'tf.reduce_sum'
+318:78: INFO: Renamed 'tf.log' to 'tf.math.log'
+318:85: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+332:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+334:14: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+334:41: INFO: Added keywords to args of function 'tf.transpose'
+336:24: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+343:42: INFO: Added keywords to args of function 'tf.reduce_sum'
+344:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/models/vgp.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/models/vgp.py'
+--------------------------------------------------------------------------------
+
+114:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+118:21: INFO: Renamed 'tf.matrix_band_part' to 'tf.linalg.band_part'
+123:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+125:15: INFO: Added keywords to args of function 'tf.transpose'
+130:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+219:31: INFO: Added keywords to args of function 'tf.transpose'
+220:27: INFO: Added keywords to args of function 'tf.transpose'
+221:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+222:13: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+223:34: INFO: Added keywords to args of function 'tf.transpose'
+224:48: INFO: Added keywords to args of function 'tf.transpose'
+224:61: INFO: Added keywords to args of function 'tf.reduce_sum'
+227:25: INFO: Added keywords to args of function 'tf.reduce_sum'
+227:39: INFO: Renamed 'tf.log' to 'tf.math.log'
+227:46: INFO: Renamed 'tf.matrix_diag_part' to 'tf.linalg.diag_part'
+228:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+231:20: INFO: Added keywords to args of function 'tf.reduce_sum'
+234:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+255:16: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+255:31: INFO: Added keywords to args of function 'tf.transpose'
+256:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+258:15: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+262:44: INFO: Added keywords to args of function 'tf.reduce_sum'
+263:23: INFO: Added keywords to args of function 'tf.transpose'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/models/gpmc.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/models/gpmc.py'
+--------------------------------------------------------------------------------
+
+82:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+83:23: INFO: Added keywords to args of function 'tf.shape'
+86:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/models/model.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/models/model.py'
+--------------------------------------------------------------------------------
+
+191:24: INFO: Added keywords to args of function 'tf.shape'
+194:16: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+195:30: INFO: Added keywords to args of function 'tf.shape'
+196:16: INFO: Renamed 'tf.random_normal' to 'tf.random.normal'
+198:15: INFO: Added keywords to args of function 'tf.transpose'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/models/gpr.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/models/gpr.py'
+--------------------------------------------------------------------------------
+
+71:41: INFO: Added keywords to args of function 'tf.shape'
+72:12: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+76:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+93:49: INFO: Added keywords to args of function 'tf.shape'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/models/__init__.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/models/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/models/sgpmc.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/models/sgpmc.py'
+--------------------------------------------------------------------------------
+
+86:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/models/svgp.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/models/svgp.py'
+--------------------------------------------------------------------------------
+
+166:70: INFO: Added keywords to args of function 'tf.shape'
+168:21: INFO: Added keywords to args of function 'tf.reduce_sum'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/multioutput/features.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/multioutput/features.py'
+--------------------------------------------------------------------------------
+
+120:8: INFO: Added keywords to args of function 'tf.transpose'
+122:34: INFO: Added keywords to args of function 'tf.transpose'
+152:8: INFO: Added keywords to args of function 'tf.shape'
+152:27: INFO: Added keywords to args of function 'tf.shape'
+153:74: INFO: Added keywords to args of function 'tf.shape'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/multioutput/kernels.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/multioutput/kernels.py'
+--------------------------------------------------------------------------------
+
+82:19: INFO: Added keywords to args of function 'tf.transpose'
+82:32: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+89:15: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+103:19: INFO: Added keywords to args of function 'tf.transpose'
+103:32: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+109:15: INFO: Renamed 'tf.matrix_diag' to 'tf.linalg.diag'
+137:19: INFO: Added keywords to args of function 'tf.transpose'
+140:19: INFO: Added keywords to args of function 'tf.reduce_sum'
+148:17: INFO: Added keywords to args of function 'tf.transpose'
+149:19: INFO: Added keywords to args of function 'tf.reduce_sum'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/multioutput/__init__.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/multioutput/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/multioutput/conditionals.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/multioutput/conditionals.py'
+--------------------------------------------------------------------------------
+
+114:9: INFO: Added keywords to args of function 'tf.transpose'
+116:14: INFO: Added keywords to args of function 'tf.transpose'
+196:18: INFO: Added keywords to args of function 'tf.shape'
+293:18: INFO: Added keywords to args of function 'tf.shape'
+295:9: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+298:21: INFO: Added keywords to args of function 'tf.transpose'
+299:8: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+306:24: INFO: Added keywords to args of function 'tf.transpose'
+309:24: INFO: Added keywords to args of function 'tf.transpose'
+312:32: INFO: Added keywords to args of function 'tf.reduce_sum'
+316:12: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+323:17: INFO: Renamed 'tf.matrix_band_part' to 'tf.linalg.band_part'
+326:23: INFO: Added keywords to args of function 'tf.transpose'
+332:19: INFO: Added keywords to args of function 'tf.transpose'
+335:19: INFO: Added keywords to args of function 'tf.transpose'
+338:37: INFO: Added keywords to args of function 'tf.reduce_sum'
+384:8: INFO: Added keywords to args of function 'tf.shape'
+385:15: INFO: Added keywords to args of function 'tf.shape'
+386:9: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+391:8: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+399:13: INFO: Added keywords to args of function 'tf.transpose'
+403:13: INFO: Added keywords to args of function 'tf.transpose'
+408:32: INFO: Added keywords to args of function 'tf.reduce_sum'
+420:13: INFO: Renamed 'tf.matrix_band_part' to 'tf.linalg.band_part'
+434:19: INFO: Added keywords to args of function 'tf.transpose'
+438:19: INFO: Added keywords to args of function 'tf.transpose'
+441:32: INFO: Added keywords to args of function 'tf.reduce_sum'
+444:43: INFO: Added keywords to args of function 'tf.shape'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/params/paramlist.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/params/paramlist.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/params/parameterized.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/params/parameterized.py'
+--------------------------------------------------------------------------------
+
+234:35: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/params/parameter.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/params/parameter.py'
+--------------------------------------------------------------------------------
+
+220:35: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+234:35: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+291:59: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+370:42: INFO: Renamed 'tf.is_variable_initialized' to 'tf.compat.v1.is_variable_initialized'
+388:15: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+394:19: WARNING: tf.get_variable requires manual check. tf.get_variable returns ResourceVariables by default in 2.0, which have well-defined semantics and are stricter about shapes. You can disable this behavior by passing use_resource=False, or by calling tf.compat.v1.disable_resource_variables().
+394:19: INFO: Renamed 'tf.get_variable' to 'tf.compat.v1.get_variable'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/params/dataholders.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/params/dataholders.py'
+--------------------------------------------------------------------------------
+
+91:38: INFO: Renamed 'tf.is_variable_initialized' to 'tf.compat.v1.is_variable_initialized'
+211:15: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+221:34: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+223:32: WARNING: Changing dataset.make_initializable_iterator() to tf.compat.v1.data.make_initializable_iterator(dataset). Please check this transformation.
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/params/__init__.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/params/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/optimizer.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/training/optimizer.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/monitor.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/training/monitor.py'
+--------------------------------------------------------------------------------
+
+131:32: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+142:29: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+143:36: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+164:11: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+159:45: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+360:79: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+679:60: INFO: Renamed 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+694:8: WARNING: *.save requires manual check. (This warning is only applicable if the code saves a tf.Keras model) Keras model.save now saves to the Tensorflow SavedModel format by default, instead of HDF5. To continue saving to HDF5, add the argument save_format='h5' to the save() function.
+698:19: INFO: tf.summary.FileWriter requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+698:19: INFO: Renamed 'tf.summary.FileWriter' to 'tf.compat.v1.summary.FileWriter'
+871:53: INFO: Renamed 'tf.Summary' to 'tf.compat.v1.Summary'
+885:26: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+885:26: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+890:30: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+890:30: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+894:29: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+894:29: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+898:24: INFO: tf.summary.merge requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+898:24: INFO: Renamed 'tf.summary.merge' to 'tf.compat.v1.summary.merge'
+925:25: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+926:24: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+926:24: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+974:27: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+975:24: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+975:24: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+1001:29: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+1002:24: INFO: tf.summary.merge requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+1002:24: INFO: Renamed 'tf.summary.merge' to 'tf.compat.v1.summary.merge'
+1002:42: INFO: tf.summary.scalar requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+1002:42: INFO: Renamed 'tf.summary.scalar' to 'tf.compat.v1.summary.scalar'
+1030:27: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+1031:24: INFO: tf.summary.histogram requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+1031:24: INFO: Renamed 'tf.summary.histogram' to 'tf.compat.v1.summary.histogram'
+1054:31: INFO: Renamed 'tf.placeholder' to 'tf.compat.v1.placeholder'
+1058:24: INFO: tf.summary.image requires manual check. The TF 1.x summary API cannot be automatically migrated to TF 2.0, so symbols have been converted to tf.compat.v1.summary.* and must be migrated manually. Typical usage will only require changes to the summary writing logic, not to individual calls like scalar(). For examples of the new summary API, see the Effective TF 2.0 migration document or check the TF 2.0 TensorBoard tutorials.
+1058:24: INFO: Renamed 'tf.summary.image' to 'tf.compat.v1.summary.image'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/tensorflow_optimizer.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/training/tensorflow_optimizer.py'
+--------------------------------------------------------------------------------
+
+53:23: WARNING: (Manual check required) upgrading self.optimizer.minimize may require renaming or removing call arguments, but it was passed variable-length *args or **kwargs. The upgrade script cannot handle these automatically.
+125:45: INFO: Renamed 'tf.Session' to 'tf.compat.v1.Session'
+156:38: INFO: Renamed 'tf.train.Optimizer' to 'tf.compat.v1.train.Optimizer'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/natgrad_optimizer.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/training/natgrad_optimizer.py'
+--------------------------------------------------------------------------------
+
+101:35: INFO: `name` passed to `name_scope`. Because you may be re-entering an existing scope, it is not safe to convert automatically,  the v2 name_scope does not support re-entering scopes by name.
+
+101:35: INFO: Renamed 'tf.name_scope' to 'tf.compat.v1.name_scope'
+159:13: INFO: Renamed 'tf.placeholder_with_default' to 'tf.compat.v1.placeholder_with_default'
+162:12: INFO: Added keywords to args of function 'tf.gradients'
+163:15: INFO: Added keywords to args of function 'tf.gradients'
+208:34: INFO: Added keywords to args of function 'tf.gradients'
+211:19: INFO: Added keywords to args of function 'tf.gradients'
+236:22: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+237:24: INFO: Renamed 'tf.assign' to 'tf.compat.v1.assign'
+339:20: INFO: Added keywords to args of function 'tf.transpose'
+341:19: INFO: Added keywords to args of function 'tf.transpose'
+349:19: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+355:15: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+378:18: INFO: Renamed 'tf.cholesky' to 'tf.linalg.cholesky'
+396:11: INFO: Added keywords to args of function 'tf.shape'
+396:27: INFO: Added keywords to args of function 'tf.shape'
+398:11: INFO: Renamed 'tf.matrix_triangular_solve' to 'tf.linalg.triangular_solve'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/hmc.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/training/hmc.py'
+--------------------------------------------------------------------------------
+
+83:13: INFO: `name` passed to `name_scope`. Because you may be re-entering an existing scope, it is not safe to convert automatically,  the v2 name_scope does not support re-entering scopes by name.
+
+83:13: INFO: Renamed 'tf.name_scope' to 'tf.compat.v1.name_scope'
+89:24: INFO: Added keywords to args of function 'tf.gradients'
+154:20: INFO: Renamed 'tf.random_uniform' to 'tf.random.uniform'
+174:45: WARNING: tf.cond called with strict argument, requires manual check: tf.cond no longer takes 'strict' argument, it behaves as if was set to True.
+174:45: INFO: Added keywords to args of function 'tf.cond'
+177:53: INFO: Removed argument strict for function tf.cond
+204:15: INFO: Added keywords to args of function 'tf.reduce_sum'
+204:44: INFO: Added keywords to args of function 'tf.reduce_sum'
+210:15: INFO: Renamed 'tf.log' to 'tf.math.log'
+210:22: INFO: Renamed 'tf.random_uniform' to 'tf.random.uniform'
+210:46: INFO: Added keywords to args of function 'tf.shape'
+221:15: WARNING: tf.cond called with strict argument, requires manual check: tf.cond no longer takes 'strict' argument, it behaves as if was set to True.
+221:15: INFO: Added keywords to args of function 'tf.cond'
+221:49: INFO: Removed argument strict for function tf.cond
+230:35: INFO: Added keywords to args of function 'tf.reduce_all'
+230:49: INFO: Renamed 'tf.is_finite' to 'tf.math.is_finite'
+231:15: INFO: Added keywords to args of function 'tf.reduce_all'
+248:21: WARNING: tf.cond called with strict argument, requires manual check: tf.cond no longer takes 'strict' argument, it behaves as if was set to True.
+248:21: INFO: Added keywords to args of function 'tf.cond'
+248:59: INFO: Removed argument strict for function tf.cond
+272:26: INFO: Renamed 'tf.random_normal' to 'tf.random.normal'
+272:43: INFO: Added keywords to args of function 'tf.shape'
+280:11: INFO: Added keywords to args of function 'tf.while_loop'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/__init__.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/training/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/scipy_optimizer.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/training/scipy_optimizer.py'
+--------------------------------------------------------------------------------
+
+130:12: WARNING: (Manual check required) upgrading self._optimizer.minimize may require renaming or removing call arguments, but it was passed variable-length *args or **kwargs. The upgrade script cannot handle these automatically.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/training/external_optimizer.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/training/external_optimizer.py'
+--------------------------------------------------------------------------------
+
+424:17: WARNING: (Manual check required) upgrading scipy.optimize.minimize may require renaming or removing call arguments, but it was passed variable-length *args or **kwargs. The upgrade script cannot handle these automatically.
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/core/errors.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/core/errors.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/core/base.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/core/base.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/core/parentable.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/core/parentable.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/core/autoflow.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/core/autoflow.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/core/__init__.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/core/__init__.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/core/node.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/core/node.py'
+--------------------------------------------------------------------------------
+
+109:24: INFO: Renamed 'tf.get_default_graph' to 'tf.compat.v1.get_default_graph'
+125:22: INFO: Renamed 'tf.get_default_session' to 'tf.compat.v1.get_default_session'
+155:17: INFO: `name` passed to `name_scope`. Because you may be re-entering an existing scope, it is not safe to convert automatically,  the v2 name_scope does not support re-entering scopes by name.
+
+155:17: INFO: Renamed 'tf.name_scope' to 'tf.compat.v1.name_scope'
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/core/tensor_converter.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/core/tensor_converter.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+Processing file '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow/core/compilable.py'
+ outputting to '/home/unkowit/anaconda3/envs/dsml/lib/python3.10/site-packages/gpflow-upgrade/core/compilable.py'
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+
